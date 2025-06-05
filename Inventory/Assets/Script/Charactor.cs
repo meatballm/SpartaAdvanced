@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Charactor : MonoBehaviour
+public class Charactor
 {
     public string id { get; private set; }
     public int level { get; private set; }
@@ -26,29 +26,39 @@ public class Charactor : MonoBehaviour
         inventory = new List<Item>();
         equippedItems = new Dictionary<EquipmentSlot, Item>();
     }
-    public void ToggleEquip(Item item)
+    public void ToggleEquip(Item item, GameObject equipIcon)
     {
-        if (item == null || !item.equipable) return;
-
+        if (item == null || !item.equipable)
+            return;
         if (item.isEquipped)
         {
             Unequip(item);
-            return;
         }
-
-        if (equippedItems.TryGetValue(item.slot, out var existing))
+        else
         {
-            Unequip(existing);
+            if (equippedItems.TryGetValue(item.slot, out var existing))
+            {
+                Unequip(existing);
+            }
+            Equip(item);
         }
 
-        Equip(item);
+        var allSlots = UnityEngine.Object.FindObjectsOfType<UISlot>();
+
+        foreach (var slot in allSlots)
+        {
+            if (slot.currentItem != null)
+            {
+                slot.equipIcon.SetActive(slot.currentItem.isEquipped);
+            }
+        }
     }
     private void Equip(Item item)
     {
+        Debug.Log("장착!");
         item.isEquipped = true;
         equippedItems[item.slot] = item;
 
-        // 장착 시 스탯 적용
         att += item.attBonus;
         def += item.defBonus;
         hp += item.hpBonus;
@@ -57,11 +67,10 @@ public class Charactor : MonoBehaviour
 
     private void Unequip(Item item)
     {
+        Debug.Log("장착해제!");
         item.isEquipped = false;
         if (equippedItems.ContainsKey(item.slot))
             equippedItems.Remove(item.slot);
-
-        // 해제 시 스탯 해제
         att -= item.attBonus;
         def -= item.defBonus;
         hp -= item.hpBonus;

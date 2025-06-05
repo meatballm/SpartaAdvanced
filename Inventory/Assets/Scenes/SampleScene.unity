@@ -1991,7 +1991,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &649719651
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3985,10 +3985,10 @@ RectTransform:
   - {fileID: 1071923615}
   m_Father: {fileID: 649719654}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 197.22, y: -231.13}
-  m_SizeDelta: {x: 394.44, y: 118.62}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 118.62}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1460029099
 MonoBehaviour:
@@ -4390,7 +4390,7 @@ MonoBehaviour:
   - itemId: axe
     icon: {fileID: 21300000, guid: 95023381eba42a0438303fe5f26d29a9, type: 3}
     equipable: 1
-    slot: 0
+    slot: 2
     attBonus: 100
     defBonus: 0
     hpBonus: 0
@@ -4399,7 +4399,7 @@ MonoBehaviour:
   - itemId: golden
     icon: {fileID: 21300000, guid: 0d0c2e2a19ecc3b4d8153854f1ce69f3, type: 3}
     equipable: 1
-    slot: 0
+    slot: 2
     attBonus: 150
     defBonus: 0
     hpBonus: 0
@@ -5523,10 +5523,10 @@ RectTransform:
   - {fileID: 1524985174}
   m_Father: {fileID: 649719654}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 197.22, y: -59.31}
-  m_SizeDelta: {x: 394.44, y: 118.62}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 118.62}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2136780042
 MonoBehaviour:

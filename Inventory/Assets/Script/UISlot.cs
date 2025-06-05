@@ -6,13 +6,13 @@ public class UISlot : MonoBehaviour, IPointerClickHandler
 {
     [SerializeField] private Image iconImage;
 
-    private Item currentItem;
-    [SerializeField]private GameObject equipIcon;
+    public Item currentItem;
+    public GameObject equipIcon;
     private Charactor ownerChar;
-
-    public void SetItem(Item item)
+    public void Initialize(Item item, Charactor character)
     {
         currentItem = item;
+        ownerChar = character;
         RefreshUI();
     }
 
@@ -27,23 +27,17 @@ public class UISlot : MonoBehaviour, IPointerClickHandler
 
         iconImage.sprite = currentItem.icon;
         iconImage.enabled = true;
-        if (currentItem.isEquipped)
-        {
-            equipIcon.SetActive(true);
-        }
     }
 
     public void OnPointerClick(PointerEventData eventData)
     {
         if(ownerChar == null)
-            Debug.Log("캬라");
         if (currentItem == null || ownerChar == null) 
         {
-            Debug.Log("장착안됨");
             return; 
         }
-        ownerChar.ToggleEquip(currentItem);
+        ownerChar.ToggleEquip(currentItem, equipIcon);
         RefreshUI();
-        Debug.Log("장착됨");
+        UIStatus.instance.SetStatusUI();
     }
 }

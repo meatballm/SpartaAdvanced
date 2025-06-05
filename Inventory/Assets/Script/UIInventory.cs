@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.TextCore.Text;
+using static UnityEditor.Progress;
 
 public class UIInventory : MonoBehaviour
 {
@@ -14,17 +16,20 @@ public class UIInventory : MonoBehaviour
     {
         instance = this;
     }
-    public void InitInventoryUI(List<Item> items)
+    public void InitInventoryUI(Charactor character)
     {
         foreach (var s in slots)
             Destroy(s.gameObject);
         slots.Clear();
 
-        for (int i = 0; i < items.Count; i++)
+        if (character == null) return;
+        for (int i = 0; i < character.inventory.Count; i++)
         {
-            var slotObj = Instantiate(slotPrefab.gameObject, slotParent);
-            var uiSlot = slotObj.GetComponent<UISlot>();
-            uiSlot.SetItem(items[i]);
+            var item = character.inventory[i];
+            var slotGO = Instantiate(slotPrefab.gameObject, slotParent);
+            var uiSlot = slotGO.GetComponent<UISlot>();
+
+            uiSlot.Initialize(item, character);
             slots.Add(uiSlot);
         }
     }

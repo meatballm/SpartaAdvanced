@@ -30,6 +30,6 @@ public class GameManager : MonoBehaviour
             player.inventory.Add(item);
         else
             Debug.LogWarning($"ItemDatabase에 '{itemId}'가 없습니다.");
-        UIInventory.instance.InitInventoryUI(player.inventory);
+        UIInventory.instance.InitInventoryUI(player);
     }
 }

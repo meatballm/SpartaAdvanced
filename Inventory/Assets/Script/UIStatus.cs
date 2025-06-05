@@ -5,10 +5,15 @@ using UnityEngine;
 
 public class UIStatus : MonoBehaviour
 {
+    public static UIStatus instance;
     [SerializeField] private TextMeshProUGUI Att;
     [SerializeField] private TextMeshProUGUI Def;
     [SerializeField] private TextMeshProUGUI Hp;
     [SerializeField] private TextMeshProUGUI Crit;
+    private void Awake()
+    {
+        instance = this;
+    }
     private void Start()
     {
         SetStatusUI();
