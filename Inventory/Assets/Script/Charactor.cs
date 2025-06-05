@@ -4,22 +4,67 @@ using UnityEngine;
 
 public class Charactor : MonoBehaviour
 {
-    public string id;
-    public int level;
-    public int gold;
-    public int att;
-    public int def;
-    public int hp;
-    public int crit;
-    // Start is called before the first frame update
-    void Start()
+    public string id { get; private set; }
+    public int level { get; private set; }
+    public int gold { get; private set; }
+    public int att { get; private set; }
+    public int def { get; private set; }
+    public int hp { get; private set; }
+    public int crit { get; private set; }
+    public List<Item> inventory { get; private set; }
+
+    private Dictionary<EquipmentSlot, Item> equippedItems;
+    public Charactor(string id, int level, int gold, int att, int def, int hp, int crit)
     {
-        
+        this.id = id;
+        this.level = level;
+        this.gold = gold;
+        this.att = att;
+        this.def = def;
+        this.hp = hp;
+        this.crit = crit;
+        inventory = new List<Item>();
+        equippedItems = new Dictionary<EquipmentSlot, Item>();
+    }
+    public void ToggleEquip(Item item)
+    {
+        if (item == null || !item.equipable) return;
+
+        if (item.isEquipped)
+        {
+            Unequip(item);
+            return;
+        }
+
+        if (equippedItems.TryGetValue(item.slot, out var existing))
+        {
+            Unequip(existing);
+        }
+
+        Equip(item);
+    }
+    private void Equip(Item item)
+    {
+        item.isEquipped = true;
+        equippedItems[item.slot] = item;
+
+        // 장착 시 스탯 적용
+        att += item.attBonus;
+        def += item.defBonus;
+        hp += item.hpBonus;
+        crit += item.critBonus;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Unequip(Item item)
     {
-        
+        item.isEquipped = false;
+        if (equippedItems.ContainsKey(item.slot))
+            equippedItems.Remove(item.slot);
+
+        // 해제 시 스탯 해제
+        att -= item.attBonus;
+        def -= item.defBonus;
+        hp -= item.hpBonus;
+        crit -= item.critBonus;
     }
 }

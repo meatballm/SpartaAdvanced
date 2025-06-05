@@ -16,6 +16,9 @@ public class UIManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+        SetMain(true);
+        SetInven(false);
+        SetStatus(false);
     }
 
     public void SetMain(bool active)
