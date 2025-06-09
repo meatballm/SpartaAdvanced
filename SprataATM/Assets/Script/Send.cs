@@ -13,7 +13,7 @@ public class Send : MonoBehaviour
 
     private void Awake()
     {
-        savePath = "C:\\Users\\wh955\\OneDrive\\Desktop\\SpartanMetaverse\\SprataATM\\Assets\\Data\\users.json";
+        savePath = SaveManager.instance.savePath;
     }
 
     public void OnSend()

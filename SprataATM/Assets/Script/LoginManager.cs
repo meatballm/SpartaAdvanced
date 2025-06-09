@@ -12,9 +12,9 @@ public class LoginManager : MonoBehaviour
     private List<UserData> userList = new List<UserData>();
     private string savePath;
 
-    private void Awake()
+    private void Start()
     {
-        savePath = "C:\\Users\\wh955\\OneDrive\\Desktop\\SpartanMetaverse\\SprataATM\\Assets\\Data\\users.json";
+        savePath = SaveManager.instance.savePath;
     }
 
     public void OnLogin()

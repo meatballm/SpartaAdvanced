@@ -35,11 +35,11 @@ public class GameManager : MonoBehaviour
         }
         Instance = this;
 
-        savePath = "C:\\Users\\wh955\\OneDrive\\Desktop\\SpartanMetaverse\\SprataATM\\Assets\\Data\\users.json";
     }
 
     private void Start()
     {
+        savePath = SaveManager.instance.savePath;
         if (userData != null)
         {
             Name = userData.UserName;

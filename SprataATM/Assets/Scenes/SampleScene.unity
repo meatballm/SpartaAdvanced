@@ -1415,7 +1415,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 191.59, y: -334.58}
+  m_AnchoredPosition: {x: 191.59, y: -425.69998}
   m_SizeDelta: {x: 383.18, y: 62.3}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &204173258
@@ -4833,7 +4833,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &634904813
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6713,7 +6713,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "ID\uB97C \uD655\uC778\uD574\uC8FC\uC138\uC694."
+  m_text: '-'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 665be5241c1265e439985ce7cf088e7f, type: 2}
   m_sharedMaterial: {fileID: 1687352174326438314, guid: 665be5241c1265e439985ce7cf088e7f, type: 2}
@@ -9278,7 +9278,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.00042725, y: 0.00085449}
+  m_AnchoredPosition: {x: 0.0004272461, y: 0.0008544922}
   m_SizeDelta: {x: 567.5, y: 319.86}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1211916702
@@ -10191,6 +10191,7 @@ MonoBehaviour:
   passwordInput: {fileID: 1103184248}
   passwordCorrectInput: {fileID: 256868870}
   ErrorMessege: {fileID: 884824060}
+  savePath: 
 --- !u!4 &1273179686
 Transform:
   m_ObjectHideFlags: 0
@@ -11852,6 +11853,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ced9d0dff36559343aa4c869fefbf0ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  savePath: 
 --- !u!4 &1502043600
 Transform:
   m_ObjectHideFlags: 0

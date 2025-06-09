@@ -1,0 +1,18 @@
+{
+    "Items": [
+        {
+            "UserName": "1",
+            "ID": "1",
+            "Password": "1",
+            "cashString": "70000",
+            "accountMoneyString": "27677"
+        },
+        {
+            "UserName": "3",
+            "ID": "3",
+            "Password": "3",
+            "cashString": "90369",
+            "accountMoneyString": "11954"
+        }
+    ]
+}

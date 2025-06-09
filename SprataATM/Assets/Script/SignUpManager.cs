@@ -11,11 +11,12 @@ public class SignUpManager : MonoBehaviour
     [SerializeField] private TMP_InputField passwordCorrectInput;
     [SerializeField] private TextMeshProUGUI ErrorMessege;
 
-    private string savePath = "C:\\Users\\wh955\\OneDrive\\Desktop\\SpartanMetaverse\\SprataATM\\Assets\\Data\\users.json";
+    public string savePath;
     private List<UserData> userList = new List<UserData>();
 
-    private void Awake()
+    private void Start()
     {
+        savePath = SaveManager.instance.savePath;
         LoadUserList();
     }
 

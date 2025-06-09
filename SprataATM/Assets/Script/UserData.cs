@@ -23,8 +23,6 @@ public class UserData
         set => accountMoneyString = value.ToString();
     }
 
-    public UserData() { }
-
     public UserData(string name, string id, string password, decimal cash=100000, decimal account=0)
     {
         UserName = name;

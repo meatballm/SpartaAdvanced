@@ -3,11 +3,13 @@ using UnityEngine;
 
 public class SaveManager : MonoBehaviour
 {
-    private string savePath;
+    public string savePath;
+    public static SaveManager instance;
 
     private void Awake()
     {
-        savePath = Path.Combine(Application.persistentDataPath, "userdata.json");
+        savePath = "Assets\\Data\\userdata.json";
+        instance = this;
     }
 
     public void Save(UserData data)
