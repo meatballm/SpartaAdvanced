@@ -18,12 +18,8 @@ public class UIInventory : MonoBehaviour
     }
     public void InitInventoryUI(Charactor character)
     {
-        foreach (var s in slots)
-            Destroy(s.gameObject);
-        slots.Clear();
-
         if (character == null) return;
-        for (int i = 0; i < character.inventory.Count; i++)
+        for (int i = slots.Count; i < character.inventory.Count; i++)
         {
             var item = character.inventory[i];
             var slotGO = Instantiate(slotPrefab.gameObject, slotParent);
