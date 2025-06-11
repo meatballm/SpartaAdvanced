@@ -6,8 +6,9 @@ public class UISlot : MonoBehaviour, IPointerClickHandler
 {
     [SerializeField] private Image iconImage;
 
-    public Item currentItem;
     public GameObject equipIcon;
+    public Item currentItem;
+    public bool isEquipped=false;
     private Charactor ownerChar;
     public void Initialize(Item item, Charactor character)
     {
@@ -27,16 +28,17 @@ public class UISlot : MonoBehaviour, IPointerClickHandler
 
         iconImage.sprite = currentItem.icon;
         iconImage.enabled = true;
+
+        equipIcon.SetActive(isEquipped);
     }
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if(ownerChar == null)
         if (currentItem == null || ownerChar == null) 
         {
             return; 
         }
-        ownerChar.ToggleEquip(currentItem, equipIcon);
+        ownerChar.ToggleEquip(this);
         RefreshUI();
         UIStatus.instance.SetStatusUI();
     }

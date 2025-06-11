@@ -13,7 +13,7 @@ public class Charactor
     public int crit { get; private set; }
     public List<Item> inventory { get; private set; }
 
-    private Dictionary<EquipmentSlot, Item> equippedItems;
+    private Dictionary<EquipmentSlot, UISlot> equippedItems = new Dictionary<EquipmentSlot, UISlot>();
     public Charactor(string id, int level, int gold, int att, int def, int hp, int crit)
     {
         this.id = id;
@@ -24,56 +24,46 @@ public class Charactor
         this.hp = hp;
         this.crit = crit;
         inventory = new List<Item>();
-        equippedItems = new Dictionary<EquipmentSlot, Item>();
     }
-    public void ToggleEquip(Item item, GameObject equipIcon)
+    public void ToggleEquip(UISlot slot)
     {
-        if (item == null || !item.equipable)
+        if (slot.currentItem == null || !slot.currentItem.equipable)
             return;
-        if (item.isEquipped)
+        if (slot.isEquipped)
         {
-            Unequip(item);
+            Unequip(slot);
         }
         else
         {
-            if (equippedItems.TryGetValue(item.slot, out var existing))
+            if (equippedItems.TryGetValue(slot.currentItem.slot, out var existing))
             {
                 Unequip(existing);
+                existing.RefreshUI();
             }
-            Equip(item);
-        }
-
-        var allSlots = UnityEngine.Object.FindObjectsOfType<UISlot>();
-
-        foreach (var slot in allSlots)
-        {
-            if (slot.currentItem != null)
-            {
-                slot.equipIcon.SetActive(slot.currentItem.isEquipped);
-            }
+            Equip(slot);
         }
     }
-    private void Equip(Item item)
+    private void Equip(UISlot slot)
     {
         Debug.Log("장착!");
-        item.isEquipped = true;
-        equippedItems[item.slot] = item;
+        slot.isEquipped = true;
+        equippedItems[slot.currentItem.slot] = slot;
 
-        att += item.attBonus;
-        def += item.defBonus;
-        hp += item.hpBonus;
-        crit += item.critBonus;
+        att += slot.currentItem.attBonus;
+        def += slot.currentItem.defBonus;
+        hp += slot.currentItem.hpBonus;
+        crit += slot.currentItem.critBonus;
     }
 
-    private void Unequip(Item item)
+    private void Unequip(UISlot slot)
     {
         Debug.Log("장착해제!");
-        item.isEquipped = false;
-        if (equippedItems.ContainsKey(item.slot))
-            equippedItems.Remove(item.slot);
-        att -= item.attBonus;
-        def -= item.defBonus;
-        hp -= item.hpBonus;
-        crit -= item.critBonus;
+        slot.isEquipped = false;
+        if (equippedItems.ContainsKey(slot.currentItem.slot))
+            equippedItems.Remove(slot.currentItem.slot);
+        att -= slot.currentItem.attBonus;
+        def -= slot.currentItem.defBonus;
+        hp -= slot.currentItem.hpBonus;
+        crit -= slot.currentItem.critBonus;
     }
 }

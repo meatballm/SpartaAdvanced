@@ -18,7 +18,6 @@ public class Item
     public int defBonus;
     public int hpBonus;
     public int critBonus;
-    public bool isEquipped;
     public Item(string itemId, Sprite icon, bool equipable, EquipmentSlot slot,int attBonus, int defBonus, int hpBonus, int critBonus)
     {
         this.itemId = itemId;
@@ -29,6 +28,5 @@ public class Item
         this.defBonus = defBonus;
         this.hpBonus = hpBonus;
         this.critBonus = critBonus;
-        this.isEquipped = false;
     }
 }
